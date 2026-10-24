@@ -1,7 +1,36 @@
+# This is a sample configuration file for the accounts microservice.
+
+# Server configuration
+server:
+  # The port on which the application will run
+  port: 8080
+
+# Spring Boot application configuration
 spring:
+  # The name of the Spring Boot application
   application:
     name: accounts
+  # Database configuration
+  datasource:
+    url: "jdbc:h2:mem:testdb"
+    username: sa
+    password: ''
+  # H2 database console configuration
+  h2:
+    console:
+      enabled: true
+  # JPA (Java Persistence API) configuration
+  jpa:
+    # The database platform to use for Hibernate
+    database-platform: "org.hibernate.dialect.H2Dialect"
+    # The strategy for schema generation (create, update, validate, none)
+    hibernate:
+      ddl-auto: update
+    # Show SQL statements in the console
+    show-sql: true
 
+# Logging configuration
 logging:
+  # Logback configuration for the application
   pattern:
     console: ${CONSOLE_LOG_PATTERN:%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %cyan(%msg%n)}
